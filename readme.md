@@ -1,3 +1,3 @@
-# The Great Filter Project
+# Scripts for Rasberry Pi
 
 ..
