@@ -5,3 +5,6 @@ query.txt
 # emacs temp files
 #*#
 *~
+
+# python
+__pycache__
