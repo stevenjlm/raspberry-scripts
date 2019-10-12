@@ -2,12 +2,15 @@ import json
 import logging
 import urllib.request
 import re
+import LedBlink as ledb
 
 FORMAT = '%(asctime)-15s %(clientip)s %(user)-8s %(message)s'
 QUERY_FILE = "./query.txt"
 BAD_WEATHER = ["rain", "storm"]
 BAD_WIND = 20
 N_PERIODS = 2
+# Weather check frequency
+T_CHECK = 3600 # sec
 
 log_format = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s")
 log = logging.getLogger('')
@@ -61,8 +64,7 @@ def check_n_periods_wind(forecast):
             return True
     return False
 
-def main():
-    log.debug('Starting nsw query')
+def monitor_step(ldi):
     api_url = load_query_url()
     forecast = call_nsw(api_url)
     bad_weather = check_bad_weather(forecast)
@@ -70,8 +72,16 @@ def main():
     check_the_weather = bad_weather or bad_wind
     if check_the_weather:
         log.info("CAREFUL: You should check the weather before riding")
+        ldi.led_on(T_CHECK)
     else:
         log.info("OK:      Weather should be ok to ride")
+        ldi.pulse_down(T_CHECK)
+    
+def main():
+    log.debug('Starting nsw query loop')
+    ldi = ledb.LedInterface()
+    while True:
+        monitor_step(ldi)
 
 if __name__ == "__main__":
     main()
