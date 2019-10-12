@@ -1,0 +1,7 @@
+# Sensitive privacy/related data
+query.txt
+*.log
+
+# emacs temp files
+#*#
+*~
