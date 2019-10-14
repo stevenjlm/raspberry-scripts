@@ -1,4 +1,4 @@
-# Scripts for Rasberry Pi
+# Scripts for Raspberry Pi
 
 ## Cycle Alert
 
