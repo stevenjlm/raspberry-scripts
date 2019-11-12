@@ -10,7 +10,7 @@ BAD_WEATHER = ["rain", "storm"]
 BAD_WIND = 20
 N_PERIODS = 2
 # Weather check frequency
-T_CHECK = 3600 # sec
+T_CHECK = 2*3600 # sec
 
 log_format = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s")
 log = logging.getLogger('')

@@ -1,7 +1,7 @@
 import RPi.GPIO as gpio
 import time
 
-DOWN_T = 5 # sec
+DOWN_T = 10 # sec
 DOWN_R = 100 # ratio
 
 OUT_PIN = 18
