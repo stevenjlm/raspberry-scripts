@@ -16,7 +16,7 @@ log_format = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)
 log = logging.getLogger('')
 log.setLevel(logging.INFO)
 
-terminal_handler = logging.StreamHandler()
+terminal_handler = logging.FileHandler("query.log")
 terminal_handler.setFormatter(log_format)
 log.addHandler(terminal_handler)
 
