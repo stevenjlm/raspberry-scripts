@@ -14,13 +14,14 @@ int main(int argc, char *argv[])
 {
    char buffer[MAXRCVLEN + 1]; /* +1 so we can add null terminator */
    int len, mysocket;
-   struct sockaddr_in dest; 
+   struct sockaddr_in dest;
+   char *ip = "192.168.1.79";
  
    mysocket = socket(AF_INET, SOCK_STREAM, 0);
   
    memset(&dest, 0, sizeof(dest));                /* zero the struct */
    dest.sin_family = AF_INET;
-   dest.sin_addr.s_addr = htonl(INADDR_LOOPBACK); /* set destination IP number - localhost, 127.0.0.1*/ 
+   dest.sin_addr.s_addr = inet_addr(ip);
    dest.sin_port = htons(PORTNUM);                /* set destination port number */
  
    connect(mysocket, (struct sockaddr *)&dest, sizeof(struct sockaddr_in));
